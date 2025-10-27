@@ -1,4 +1,4 @@
-
+using Chatter.Server.Hubs;
 namespace Chatter.Server
 {
     public class Program
@@ -13,6 +13,7 @@ namespace Chatter.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -32,6 +33,7 @@ namespace Chatter.Server
 
 
             app.MapControllers();
+            app.MapHub<ChatHub>("/chathub");
 
             app.MapFallbackToFile("/index.html");
 
