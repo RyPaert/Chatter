@@ -14,8 +14,20 @@ namespace Chatter.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddSignalR();
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("ShittyFuckingCorsPolicyBullshit", policy =>
+				{
+					policy.WithOrigins("http://localhost:5173")
+						  .AllowAnyHeader()
+						  .AllowAnyMethod()
+						  .AllowCredentials();
+				});
+			});
 
-            var app = builder.Build();
+			var app = builder.Build();
+
+            app.UseCors("ShittyFuckingCorsPolicyBullshit");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
