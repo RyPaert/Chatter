@@ -44,8 +44,8 @@ export default function Chat() {
             <div className="chat-container">
                 <ul>
                     {messages.map((m, i) => (
-                        <li key={i}>
-                            <b>{m.user}</b> <br/>{m.messageText}
+                        <li className="chat-info" key={i}>
+                            <b className="chat-title">{m.user}</b> <br/>{m.messageText}
                         </li>                        
                     ))}
                 </ul>

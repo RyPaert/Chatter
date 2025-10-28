@@ -23,31 +23,48 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 22cm;
+  line-height: 2;
+  color:yellow;
+}
+b{
+    color:antiquewhite;
+}
+li{
+    color:aliceblue;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+    margin-left: 8px;
+    padding: 8px 13px;
+    background-color: yellow;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.chat-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+.chat-field input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
 }
 button:hover {
-  border-color: #646cff;
+    border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
