@@ -31,23 +31,22 @@ ul {
         flex: 1;
         padding: 10px;
         border-radius: 20px;
-        background: #71b9b9;
+        background: wheat;
         font-size: 16px;
         outline: none;
         font-family: 'Times New Roman';
-        
     }
-    .chat-field button {
-        margin-left: 8px;
-        padding: 10px 13px;
-        background-color: wheat;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        font-family: 'Times New Roman';
-    }
+.chat-field button {
+    margin-left: 8px;
+    padding: 10px 13px;
+    background-color: wheat;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+}
 
 .chat-field button:hover {
   background-color: wheat;
@@ -74,6 +73,11 @@ ul {
 .chat-info {
     color: white;
     font-family: 'Times New Roman';
+}
+.chat-bigTitle {
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    color: #2f4f4f;
 }
 
 

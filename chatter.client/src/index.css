@@ -28,13 +28,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-}
-
-h1 {
-  font-size: 22cm;
-  line-height: 2;
-  color:yellow;
+    background-color: wheat;
 }
 b{
     color:antiquewhite;
