@@ -4,11 +4,10 @@ import * as signalR from "@microsoft/signalr";
 export default function Chat() {
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState("");
-    const [connection, setConnection] = useState(null);
-    const [connected, setConnected] = useState(false);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        fetch("/messages")
+        fetch(`${apiUrl}/messages`)
             .then(res => res.json())
             .then(data => setMessages(data));
 
@@ -17,15 +16,13 @@ export default function Chat() {
             .withAutomaticReconnect()
             .build();
 
-        newConnection.on("ReceiveMessage", (user, messageText) => {
-            setMessages(prev => [...prev, { user, messageText }]);
+        newConnection.on("ReceiveMessage", (user, messageText, id) => {
+            setMessages(prev => [...prev, { id, user, messageText }]);
         });
 
         newConnection.start()
-            .then(() => setConnected(true))
             .catch(err => console.error("Connection failed:", err));
 
-        setConnection(newConnection);
 
         return () => {
             newConnection.stop();
@@ -33,10 +30,12 @@ export default function Chat() {
     }, []);
 
     const sendMessage = async () => {
-        if (connection && connected && text) {
-            await connection.invoke("SendMessage", "User", text);
-            setText("");
-        }
+        await fetch(`${apiUrl}/messages`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user: "User", messageText: text })
+        });
+        setText("");
     };
 
     return (
