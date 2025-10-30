@@ -1,20 +1,12 @@
-import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
+import Chat from './components/chat.jsx';
 import './App.css'
 
-function App() {
-    const [count, setCount] = useState(0)
+export default function App() {
     return (
-        <>
-            <h1>CHATTER</h1>
-            <div className="card">
-                <label></label>
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-            </div>
-        </>
-    )
+        <div className="App">
+            <h1 className="chat-bigTitle">Live Chat</h1>
+            <Chat />
+        </div>
+    );
 }
-export default App
+

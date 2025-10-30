@@ -1,4 +1,4 @@
-
+using Chatter.Server.Hubs;
 namespace Chatter.Server
 {
     public class Program
@@ -13,8 +13,21 @@ namespace Chatter.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSignalR();
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("ShittyFuckingCorsPolicyBullshit", policy =>
+				{
+					policy.WithOrigins("http://localhost:5173")
+						  .AllowAnyHeader()
+						  .AllowAnyMethod()
+						  .AllowCredentials();
+				});
+			});
 
-            var app = builder.Build();
+			var app = builder.Build();
+
+            app.UseCors("ShittyFuckingCorsPolicyBullshit");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -32,6 +45,7 @@ namespace Chatter.Server
 
 
             app.MapControllers();
+            app.MapHub<ChatHub>("/chathub");
 
             app.MapFallbackToFile("/index.html");
 
