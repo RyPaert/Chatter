@@ -13,7 +13,7 @@ Arendajad: Thomas-Henry Pärt, Sandra Sark
    
    <img width="579" height="191" alt="{D9B06057-FE36-4C2E-9109-912B1D750F54}" src="https://github.com/user-attachments/assets/d1b4899b-9fd8-4ca4-9c36-a6d5d4edad58" />
 
-3. Üleval ribast vali <i> View > Terminal </i> ja pane terminali käsk
+3. Üleval ribast vali <i> View > Terminal </i>, pane terminal Powershell'ilt Command Prompt'iks ja pane terminali käsk
    "npm install @microsoft/signalr"
 
    <img width="528" height="894" alt="{1B5B16C0-F043-44AF-943E-C7A59E59091D}" src="https://github.com/user-attachments/assets/b459ffec-7e66-449b-aa95-a5e4c1673ff6" />
