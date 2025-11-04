@@ -73,11 +73,23 @@ ul {
 .chat-info {
     color: white;
     font-family: 'Times New Roman';
+    gap: 10px;
 }
 .chat-bigTitle {
     font-size: 30px;
     font-family: 'Times New Roman';
     color: #2f4f4f;
+}
+.chat-info button {
+    margin-left: 200px;
+    padding: 5px 8px;
+    background-color: wheat;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
 }
 
 
