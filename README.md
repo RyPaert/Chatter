@@ -19,12 +19,22 @@ Arendajad: Thomas-Henry Pärt, Sandra Sark
    <img width="528" height="894" alt="{1B5B16C0-F043-44AF-943E-C7A59E59091D}" src="https://github.com/user-attachments/assets/b459ffec-7e66-449b-aa95-a5e4c1673ff6" />
 
 4. .env.example järgi tuleb teha .env file mis tuleb täita oma andmetega.
+   
+   4.1. PORT-i oma '.env' file-i jaoks saad sa leida kahest kohast.
+   Sa saad minna asukohta <i> Chatter.Server/launchsettings.json </i> otsida "'https': {", siis selle alt leida "applicationUrl:" ja sealt võtta PORT mis on httpsi lõpus. <mark>(pildil highlighted)</mark>
+   
+   <img width="461" height="151" alt="image" src="https://github.com/user-attachments/assets/7a82e944-6749-44c0-8493-3eabd687303a" />
 
-5. Vajuta üleval ribalt https'iga launch nuppu
+
+   4.2 või sa launchid applicationi kohe ja ootad, et ilmuks terminal, kus on samuti näidatud HTTPS PORTi. 
+
+   <img width="431" height="45" alt="image" src="https://github.com/user-attachments/assets/90f724d8-37ec-4ddf-998a-af8919ddda43" />
+
+6. Vajuta üleval ribalt https'iga launch nuppu
 
    <img width="127" height="62" alt="{0DEEF51F-8154-46C6-99D5-058976CFF066}" src="https://github.com/user-attachments/assets/2403a41a-a645-4fb9-91a5-6f3c52a1be67" />
 
-6. Kasutamiseks kirjuta text fieldi ja vajuta 'Send'!
+7. Kasutamiseks kirjuta text fieldi ja vajuta 'Send'!
 
    <img width="508" height="696" alt="{CA5940F2-8309-4BE2-AFC3-9B975F5A80B7}" src="https://github.com/user-attachments/assets/73f9ab8c-8440-4780-8785-d761b74a437a" />
 
