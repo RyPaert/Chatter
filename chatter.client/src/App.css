@@ -79,5 +79,18 @@ ul {
     font-family: 'Times New Roman';
     color: #2f4f4f;
 }
+.button_for_name {
+    margin-left: 16px;
+    margin-top: -170px;
+    padding: 15px 25px;
+    background-color: #2f4f4f;
+    color: wheat;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+}
 
 
