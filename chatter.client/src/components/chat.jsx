@@ -4,6 +4,8 @@ import * as signalR from "@microsoft/signalr";
 export default function Chat() {
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState("");
+    const [username, setUsername] = useState("")
+    const [isUsernameSet, setIsUsernameSet] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
@@ -30,6 +32,10 @@ export default function Chat() {
     }, []);
 
     const sendMessage = async () => {
+        if (username === "") {
+            alert("Please enter your username before sending a message");
+            return;
+        }
         await fetch(`${apiUrl}/messages`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -37,6 +43,33 @@ export default function Chat() {
         });
         setText("");
     };
+    const handleSetUsername = () => {
+        const name = prompt("enter your username:");
+        if (name) {
+            setUsername(name);
+            setIsUsernameSet(true);
+        }
+    };
+    const deleteMessage = async (id) => {
+        await fetch(`${apiUrl}/messages/${id}`, {
+            method: "DELETE",
+        });
+        setMessages(prevMessages => prevMessages.filter(m => m.id !== id));
+    };
+
+
+    if (!isUsernameSet) {
+        return (
+            <div className="chat-container-body-username">
+                <div className="chat-container-username">
+                    <h2 className="username-title-warning">Please enter your username</h2>
+                    <button className="username-button-send" onClick={handleSetUsername} >
+                        send
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="chat-container-body">
@@ -44,14 +77,15 @@ export default function Chat() {
                 <ul>
                     {messages.map((m, i) => (
                         <li className="chat-info" key={i}>
-                            <b className="chat-title">{m.user}</b> <br/>{m.messageText}
+                            <b className="chat-title">{m.user}</b> <br />{m.messageText}
+                            <button className="delete-button" onClick={() => deleteMessage(m.id)}>Delete</button>
                         </li>                        
                     ))}
                 </ul>
             </div>
             <div className="chat-field">
-                <input value={text} onChange={e => setText(e.target.value)} />
-                <button onClick={sendMessage}>Send</button>
+                <input value={text} onChange={e => setText(e.target.value)} disabled={username === ""} />
+                <button onClick={sendMessage} disabled={username === "" || text === ""}>Send</button>
             </div>
         </div>
     );

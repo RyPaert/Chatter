@@ -17,6 +17,8 @@ ul {
     padding: 10px;
     overflow-y: auto;
     color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .chat-field {
     display: flex;
@@ -27,15 +29,20 @@ ul {
     background: #2f4f4f;
     width: 10.2cm;
 }
-    .chat-field input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 20px;
-        background: wheat;
-        font-size: 16px;
-        outline: none;
-        font-family: 'Times New Roman';
-    }
+
+.chat-field input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    background: wheat;
+    font-size: 16px;
+    outline: none;
+    font-family: 'Times New Roman';
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
 .chat-field button {
     margin-left: 8px;
     padding: 10px 13px;
@@ -71,8 +78,14 @@ ul {
     font-family: 'Times New Roman';
 }
 .chat-info {
+    position: relative;
     color: white;
     font-family: 'Times New Roman';
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-right: 40px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .chat-bigTitle {
     font-size: 30px;
@@ -85,6 +98,35 @@ ul {
     padding: 15px 25px;
     background-color: #2f4f4f;
     color: wheat;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+}
+.username-title-warning {
+     margin-left: 16px;
+    margin-top: -10px;
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    color: #2f4f4f;
+}
+.username-button-send {
+    margin-left: 150px;
+    padding: 10px 20px;
+    background-color: #2f4f4f;
+    color: wheat;
+    border-radius: 10px;
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    font-size: 16px;
+}
+.delete-button {
+    position: absolute;
+    right: 10px;
+    padding: 5px 8px;
+    background-color: wheat;
     border-radius: 10px;
     border: none;
     cursor: pointer;
