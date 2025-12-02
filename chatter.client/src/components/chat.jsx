@@ -71,15 +71,26 @@ export default function Chat() {
         );
     }
 
+    const deleteMessage = async (id) => {
+        await fetch(`${apiUrl}/messages/${id}`, {
+            method: "DELETE",
+        
+        });
+        setMessages(messages.filter(m => m.id !== id));
+    };
+
     return (
         <div className="chat-container-body">
             <div className="chat-container">
                 <ul>
                     {messages.map((m, i) => (
-                        <li className="chat-info" key={i}>
-                            <b className="chat-title">{m.user}</b> <br />{m.messageText}
-                            <button className="delete-button" onClick={() => deleteMessage(m.id)}>Delete</button>
-                        </li>                        
+                        <li className="chat-info" key={m.id}>  
+                            <div className="chat-text">
+                                <b className="chat-title">{m.user}</b><br></br>
+                                <span>{m.messageText}</span>
+                            </div>
+                            <button onClick={() => deleteMessage(m.id)}>Delete</button>
+                        </li>                       
                     ))}
                 </ul>
             </div>
