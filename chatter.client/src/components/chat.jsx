@@ -14,7 +14,7 @@ export default function Chat() {
             .then(data => setMessages(data));
 
         const newConnection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:7037/chatHub")
+            .withUrl(`${apiUrl}/chatHub`)
             .withAutomaticReconnect()
             .build();
 

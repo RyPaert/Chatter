@@ -30,6 +30,11 @@ jobs:
       - name: Build project
         run: dotnet build Chatter.Server/Chatter.Server.csproj --configuration Release
 
+      - name: Build frontend
+        run: |
+          cd chatter.client
+          npm run build -- --mode production
+
       - name: Publish project
         run: dotnet publish Chatter.Server/Chatter.Server.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
