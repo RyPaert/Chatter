@@ -19,21 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install frontend dependencies
-        run: |
-          cd chatter.client
-          npm ci
-
-      - name: Build frontend
-        run: |
-          cd chatter.client
-          npm run build
-
-      - name: Copy frontend build to backend wwwroot
-        run: |
-          mkdir -p Chatter.Server/wwwroot
-          cp -r chatter.client/dist/* Chatter.Server/wwwroot/
-
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
