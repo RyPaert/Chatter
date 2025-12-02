@@ -19,6 +19,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install frontend dependencies
+        run: |
+          cd chatter.client
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd chatter.client
+          npm run build
+
+      - name: Copy frontend build to backend wwwroot
+        run: |
+          mkdir -p Chatter.Server/wwwroot
+          cp -r chatter.client/dist/* Chatter.Server/wwwroot/
+
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
@@ -55,8 +70,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          auth-type: 'user-assigned'
-          identity: 'oidc-msi-b7b1'
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FB31A246EAF04DE19909F8F418D1CA1A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_20976660EACD4C31954FE371B7FFA2DF }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D771CD840BEF4449A5A82CBA714339C7 }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
