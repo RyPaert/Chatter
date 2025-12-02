@@ -5,14 +5,14 @@ namespace Chatter.Server.Models
 {
     public class User : IdentityUser
     {
-        public Guid Id {  get; set; }
+        //public Guid Id {  get; set; }
+
+        ////[Required]
+        ////[EmailAddress]
+        ////public string Email {  get; set; }
 
         //[Required]
-        //[EmailAddress]
-        //public string Email {  get; set; }
-
-        [Required]
-        public string Password { get; set; }
+        //public string Password { get; set; }
 
         //[Required]
         //public string ConfirmPassword {  get; set; }
