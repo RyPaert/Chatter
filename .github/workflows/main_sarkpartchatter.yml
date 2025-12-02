@@ -55,8 +55,8 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          enable-AzPSSession: true
-          identity-id: '/subscriptions/932deeea-5223-4ce2-a6ad-cb4cb72eff85/resourceGroups/SarkPartChatter_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/oidc-msi-b7b1'
+          auth-type: 'user-assigned'
+          identity: 'oidc-msi-b7b1'
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
