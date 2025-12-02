@@ -51,9 +51,8 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FB31A246EAF04DE19909F8F418D1CA1A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_20976660EACD4C31954FE371B7FFA2DF }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D771CD840BEF4449A5A82CBA714339C7 }}
+          enable-AzPSSession: true
+          identity-id: '/subscriptions/932deeea-5223-4ce2-a6ad-cb4cb72eff85/resourceGroups/SarkPartChatter_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/oidc-msi-b7b1'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -62,4 +61,5 @@ jobs:
           app-name: 'SarkPartChatter'
           slot-name: 'Production'
           package: .
+
           
