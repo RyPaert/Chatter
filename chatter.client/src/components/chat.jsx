@@ -71,19 +71,11 @@ export default function Chat() {
         );
     }
 
-    const deleteMessage = async (id) => {
-        await fetch(`${apiUrl}/messages/${id}`, {
-            method: "DELETE",
-        
-        });
-        setMessages(messages.filter(m => m.id !== id));
-    };
-
     return (
         <div className="chat-container-body">
             <div className="chat-container">
                 <ul>
-                    {messages.map((m, i) => (
+                    {messages.map((m) => (
                         <li className="chat-info" key={m.id}>  
                             <div className="chat-text">
                                 <b className="chat-title">{m.user}</b><br></br>

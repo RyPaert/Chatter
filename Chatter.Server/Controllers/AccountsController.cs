@@ -7,16 +7,16 @@ namespace Chatter.Server.Controllers
     [Route("accounts")]
     public class AccountsController : ControllerBase
     {
-        [HttpPost("{username}")]
-        public IActionResult setUsername(User user, string username)
-        {
-            if (username == null || string.IsNullOrWhiteSpace(username)) { return BadRequest(); }
-            else if (ModelState.IsValid)
-            {
-                user.Id = new Guid();
-                user.Name = username;
-            }
-            return Ok(username);
-        }
+        //[HttpPost("{username}")]
+        //public IActionResult setUsername(User user, string username)
+        //{
+        //    if (username == null || string.IsNullOrWhiteSpace(username)) { return BadRequest(); }
+        //    else if (ModelState.IsValid)
+        //    {
+        //        user.Id = new Guid();
+        //        user.Name = username;
+        //    }
+        //    return Ok(username);
+        //}
     }
 }
