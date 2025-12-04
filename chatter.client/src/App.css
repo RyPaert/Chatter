@@ -1,103 +1,104 @@
-ul {
-    list-style-type: none;
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+    font-family:'Times New Roman', Times, serif
 }
-.chat-container-body {
-    background: #2f4f4f;
-    border: 1px solid #444;
-    border-radius: 10px;
-    height: 600px;
+
+
+.chat-wrapper {
     width: 400px;
+    margin: 30px auto 0 auto;
+    text-align: center;
+}
+
+
+.logout-button {
+    background-color: wheat;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+}
+
+
+.chat-container-body {
+    background-color: #2f4f4f;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
+
+
 .chat-container {
     flex: 1;
-    padding: 10px;
     overflow-y: auto;
-    color: white;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    margin-bottom: 15px;
 }
+
+
+.chat-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+}
+
+
+.chat-info button {
+    background-color: wheat;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+
 .chat-field {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 10px;
-    background: #2f4f4f;
-    width: 10.2cm;
+    gap: 10px;
 }
 
 .chat-field input {
     flex: 1;
-    padding: 10px;
-    border-radius: 20px;
-    background: wheat;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
     font-size: 16px;
-    outline: none;
-    font-family: 'Times New Roman';
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    width: 100%;
 }
 
 .chat-field button {
-    margin-left: 8px;
-    padding: 10px 13px;
     background-color: wheat;
-    border-radius: 10px;
     border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Times New Roman';
-}
-
-.chat-field button:hover {
-  background-color: wheat;
-}
-
-.App {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 500px;
-}
-.chat-title {
-    position: revert-layer;
-    top: 1px;
-    right: 2px;
-    font-size: 16px;
-    font-weight: bold;
-    color: wheat;
-    font-family: 'Times New Roman';
-}
-.chat-info {
-    position: relative;
+    border-radius: 12px;
     color: white;
-    font-family: 'Times New Roman';
-    gap: 10px;
-}
-.chat-bigTitle {
-    font-size: 30px;
-    font-family: 'Times New Roman';
-    color: #2f4f4f;
-}
-.chat-info button {
-    margin-left: 200px;
-    padding: 5px 8px;
-    background-color: wheat;
-    border-radius: 10px;
-    border: none;
+    padding: 12px 20px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Times New Roman';
+}
+
+.button-primary {
+    background-color: #2f4f4f;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 

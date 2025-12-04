@@ -11,49 +11,60 @@ namespace Chatter.Server.Controllers
 	[Route("messages")]
 	public class MessagesController : ControllerBase
 	{
-		private static readonly List<Message> Messages = new List<Message>();
-		private readonly IHubContext<ChatHub> _hubContext;
-		public MessagesController(IHubContext<ChatHub> hubContext) { _hubContext = hubContext; }
+        private static readonly List<Message> Messages = new List<Message>();
+        private readonly IHubContext<ChatHub> _hubContext;
 
-		[HttpGet]
-		public ActionResult<IEnumerable<Message>> GetMessages()
-		{
-			return Ok(Messages);
-		}
+        public MessagesController(IHubContext<ChatHub> hubContext)
+        {
+            _hubContext = hubContext;
+        }
 
-		[HttpPost]
-		public async Task<ActionResult<Message>> PostMessages([FromBody] Message message)
-		{
-			if (message == null) return BadRequest();
+       
+        [HttpGet]
+        public ActionResult<IEnumerable<Message>> GetMessages()
+        {
+            return Ok(Messages);
+        }
 
-			message.Id = Guid.NewGuid();
-			Messages.Add(message);
+       
+        [HttpPost]
+        public async Task<ActionResult<Message>> PostMessage([FromBody] Message message)
+        {
+            if (message == null || string.IsNullOrWhiteSpace(message.MessageText))
+                return BadRequest("Invalid message.");
 
-			await _hubContext.Clients.All.SendAsync
-				(
-				"ReceiveMessage",
-				message.User,
-				message.MessageText,
-				message.Id
-				);
+            message.Id = Guid.NewGuid();
+            Messages.Add(message);
 
-			return Ok(message);
-		}
+           
+            await _hubContext.Clients.All.SendAsync(
+                "ReceiveMessage",
+                message.User,
+                message.MessageText,
+                message.Id
+            );
 
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteMessage(Guid id)
-		{
-			var message = Messages.FirstOrDefault(m => m.Id == id);
-			if (message == null) return NotFound();
+            return Ok(message);
+        }
 
-			await _hubContext.Clients.All.SendAsync
-				(
-				"MessageDeleted",
-				id
-				);
+    
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMessage(Guid id, [FromQuery] string user)
+        {
+            var message = Messages.FirstOrDefault(m => m.Id == id);
 
-			Messages.Remove(message);
-			return NoContent();
-		}
-	}
+            if (message == null)
+                return NotFound();
+
+            
+            if (!string.Equals(message.User, user, StringComparison.OrdinalIgnoreCase))
+                return Forbid("You can only delete your own messages.");
+
+            Messages.Remove(message);
+
+            await _hubContext.Clients.All.SendAsync("MessageDeleted", id);
+
+            return NoContent();
+        }
+    }
 }
