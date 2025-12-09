@@ -117,6 +117,7 @@ export default function Chat() {
                 <input
                     value={text}
                     onChange={(e) => setText(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" ? sendMessage() : ""}
                     disabled={username === ""}
                 />
                 <button  onClick={sendMessage} disabled={username === "" || text === ""}>
